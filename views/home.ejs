@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="row">
+        <div class="col-8">
+            <div class="container">
+                <h1 class="bg-success">Contact List</h1>
+                <input type="text" id="search-input-name" placeholder="search contact"> OR <button id="add-contact-button">Add new contact</button>
+                <br>
+                <span id="search-output"></span>
+                <ul>
+                    <% contacts.forEach(contact => { %>
+                        <li id="<%= contact.id %>">
+                            <strong><%= contact.name %></strong>: <span><%= contact.mobile %></span>
+                            <button data-contactId="<%= contact.id  %>" class="edit-contact-button">edit</button>
+                            <button data-contactId="<%= contact.id %>" class="delete-contact-button">delete</button>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
+        </div>
+        <div class="col-4">
+            <!-- forms area -->
+            <!-- Add contact form -->
+            <div id="add-contact-area" style="display: none;">
+                <b>Add new contact</b>
+                <form id="add-contact-form" action="/new" method="post">
+                    name<br>
+                    <input type="text" name="name"><br>
+                    contact number<br>
+                    <input type="text" name="mobile">
+                    <button type="submit">add</button>
+                </form>
+            </div>
+            
+            <!-- update contact form -->
+            <div id="update-contact-area" style="display: none;">
+                <b>Update contact</b>
+                <form id="update-contact-form" action="" method="post">
+                    name<br>
+                    <input type="text" name="name"><br>
+                    contact number<br>
+                    <input type="text" name="mobile">
+                    <button type="submit">update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="/js/home.js"></script>
+</body>
+</html>
